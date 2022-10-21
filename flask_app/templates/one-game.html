@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/one-game.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    </head>
+    <body>
+        {% for game in game %}
+        {% if game.id == 1 %}
+            <nav id="d2-nav" class="d-flex flex-column px-5 py-3 gap-5 navbar">
+                <div class="d-flex justify-content-between w-100">
+                    <div class="d-flex gap-2 fs-1">
+                        {% if session['username'] %}
+                            <p class="fs-1 text-white"> Hey, {{ session['username'] }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex gap-4">
+                        <p><a href="/"  class="btn btn-info">Home</a></p>
+                        <p><a href="/games" class="btn btn-info" >Games</a></p>
+                        {% if session['user_id']%}
+                            <p><a href="/logout" class="btn btn-info" >Logout</a></p>
+                            <p><a href="/friends" class="btn btn-info">Friends</a></p>
+                            <p><a href="/settings"  class="btn btn-info">Settings</a></p>
+                        {% else %}
+                            <p><a href="/login" class="btn btn-info" >Login</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center text-white p-3">
+                    <h1 id="game-title" class="fw-light">{{ game.title }}</h1>
+                </div>
+            </nav>
+        {% elif game.id == 2 %}
+        <nav id="wz-nav" class="d-flex flex-column px-5 py-3 gap-5 navbar">
+            <div class="d-flex justify-content-between w-100">
+                <div class="d-flex gap-2 fs-1">
+                    {% if session['username'] %}
+                        <p class="fs-1 text-white"> Hey, {{ session['username'] }}</p>
+                    {% endif %}
+                </div>
+                <div class="d-flex gap-4">
+                    <p><a href="/"  class="btn btn-info">Home</a></p>
+                    <p><a href="/games" class="btn btn-info" >Games</a></p>
+                    {% if session['user_id']%}
+                        <p><a href="/logout" class="btn btn-info" >Logout</a></p>
+                        <p><a href="/friends" class="btn btn-info">Friends</a></p>
+                        <p><a href="/settings"  class="btn btn-info">Settings</a></p>
+                    {% else %}
+                        <p><a href="/login" class="btn btn-info" >Login</a></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="d-flex justify-content-center text-dark p-3">
+                <h1 id="game-title" class="fw-light">{{game.title}}</h1>
+            </div>
+        </nav>
+        {% elif game.id == 3 %}
+            <nav class="d-flex flex-column px-5 py-3 gap-5 navbar">
+                <div class="d-flex justify-content-between w-100">
+                    <div class="d-flex gap-2 fs-1">
+                        {% if session['username'] %}
+                            <p class="fs-1 text-white"> Hey, {{ session['username'] }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex gap-4">
+                        <p><a href="/"  class="btn btn-info">Home</a></p>
+                        <p><a href="/games" class="btn btn-info" >Games</a></p>
+                        {% if session['user_id']%}
+                            <p><a href="/logout" class="btn btn-info" >Logout</a></p>
+                            <p><a href="/friends" class="btn btn-info">Friends</a></p>
+                            <p><a href="/settings"  class="btn btn-info">Settings</a></p>
+                        {% else %}
+                            <p><a href="/login" class="btn btn-info" >Login</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center text-white p-3">
+                    <h1 id="game-title" class="fw-light">{{game.title}}</h1>
+                </div>
+            </nav>
+        {% elif game.id == 4 %}
+            <nav id="ov-nav" class="d-flex flex-column px-5 py-3 gap-5 navbar">
+                <div class="d-flex justify-content-between w-100">
+                    <div class="d-flex gap-2 fs-1">
+                        {% if session['username'] %}
+                            <p class="fs-1 text-white"> Hey, {{ session['username'] }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex gap-4">
+                        <p><a href="/"  class="btn btn-info">Home</a></p>
+                        <p><a href="/games" class="btn btn-info" >Games</a></p>
+                        {% if session['user_id']%}
+                            <p><a href="/logout" class="btn btn-info" >Logout</a></p>
+                            <p><a href="/friends" class="btn btn-info">Friends</a></p>
+                            <p><a href="/settings"  class="btn btn-info">Settings</a></p>
+                        {% else %}
+                            <p><a href="/login" class="btn btn-info" >Login</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center text-white p-3">
+                    <h1 id="game-title" class="fw-light">{{game.title}}</h1>
+                </div>
+            </nav>
+        {% elif game.id == 5 %}
+            <nav id="valorant-nav" class="d-flex flex-column px-5 py-3 gap-5 navbar">
+                <div class="d-flex justify-content-between w-100">
+                    <div class="d-flex gap-2 fs-1">
+                        {% if session['username'] %}
+                            <p class="fs-1 text-white"> Hey, {{ session['username'] }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex gap-4">
+                        <p><a href="/"  class="btn btn-info">Home</a></p>
+                        <p><a href="/games" class="btn btn-info" >Games</a></p>
+                        {% if session['user_id']%}
+                            <p><a href="/logout" class="btn btn-info" >Logout</a></p>
+                            <p><a href="/friends" class="btn btn-info">Friends</a></p>
+                            <p><a href="/settings"  class="btn btn-info">Settings</a></p>
+                        {% else %}
+                            <p><a href="/login" class="btn btn-info" >Login</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center text-white p-3">
+                    <h1 id="game-title" class="fw-light">{{game.title}}</h1>
+                </div>
+            </nav>
+        {% else %}
+            <nav id="fort-nav" class="d-flex flex-column px-5 py-3 gap-5 navbar">
+                <div class="d-flex justify-content-between w-100">
+                    <div class="d-flex gap-2 fs-1">
+                        {% if session['username'] %}
+                            <p class="fs-1 text-white"> Hey, {{ session['username'] }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex gap-4">
+                        <p><a href="/"  class="btn btn-info">Home</a></p>
+                        <p><a href="/games" class="btn btn-info" >Games</a></p>
+                        {% if session['user_id']%}
+                            <p><a href="/logout" class="btn btn-info" >Logout</a></p>
+                            <p><a href="/friends" class="btn btn-info">Friends</a></p>
+                            <p><a href="/settings"  class="btn btn-info">Settings</a></p>
+                        {% else %}
+                            <p><a href="/login" class="btn btn-info" >Login</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center text-white p-3">
+                    <h1 id="game-title" class="fw-light">{{game.title}}</h1>
+                </div>
+            </nav>
+        {% endif %}
+        <main class="p-5 " style="height: 100%;">
+            <div class="d-flex flex-column align-items-center h-100">
+                {% for message in get_flashed_messages() %}
+                <div class="d-flex justify-content-center  h-25 w-25 text-center py-2" style="background-color: #FCDBDD; color:#984449;">
+                    <p>{{message}}</p>
+                </div>
+                {% endfor %}
+                <header class=" text-white text-center w-50">
+                    <p>Join up with {{game.title}} players just like you below, or signup to create<br> your own {{game.title}} lfg post.</p>
+                    <div>
+                        {% if session['user_id'] %}
+                        <button data-form-target="#create_form" class="btn btn-primary">Create new post</button>
+                        {% else %}
+                        <p><a href="/register" class="btn btn-primary">Create new post</a></p>
+                        {% endif %}
+                        <div class="create_form  bg-light text-dark rounded-1" id="create_form">
+                            <div class="create_post_header d-flex  py-3 px-4 justify-content-between">
+                                <h3>Create post</h3>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <form action="/create/post" id="form" method="post">
+                                <div class="create_post_body p-4 d-flex flex-column gap-3">
+                                    <div class="d-flex flex-column align-items-start">
+                                        <label for="title">Title:</label>
+                                        <textarea name="title" id="" cols="40" rows="5" class="form-control"></textarea>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-start">
+                                        <label for="content">Description:</label>
+                                        <textarea name="content" id="" cols="40" rows="10" class="form-control" ></textarea>
+                                    </div>
+                                    <input type="submit"  id="sendForm" value="submit" class="btn btn-primary form-control">
+                                    <input type="hidden" value="{{ game.id }}" name="game_id">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </header>
+                {% for post in posts %}
+                <div  id="posts" class=" px-4 py-2 text-white my-4  " style="height: 230px; width:65%; background-color:#16191C;" >
+                    <p> </p>
+                    <p> Title: {{ post.title }}</p>
+                    <p> Content: {{ post.content }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+        {% endfor %}
+        <div id="overlay"></div>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/apex.js') }}"></script>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(-45deg, #246bb2 0%, #24292e 30%);
+}
+
+#cursor{
+    font-size: 30px;
+}
+
+
+    @-webkit-keyframes STAR {
+        0% {
+        background: powderblue;
+        height: 1px;
+        width: 1px;
+        box-shadow: 0px 0px 10px white;
+        }
+        10% {
+        background: #b0e5de;
+        }
+        20% {
+        background: #b0e5cc;
+        }
+        30% {
+        background: #cce5b0;
+        }
+        40% {
+        background: #dae5b0;
+        }
+        50% {
+        background: #e5ddb0;
+        width: 4px;
+        height: 4px;
+        box-shadow: 0px 0px 10px #d3bd3d;
+        }
+        100% {
+        width: 1px;
+        height: 1px;
+        background: powderblue;
+        box-shadow: 0px 0px 10px white;
+        }
+    }
+
+
+    .star {
+        height: 1px;
+        width: 1px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px white;
+        background: powderblue;
+        position: absolute;
+    }
+
+    .star.pulse
+    {
+        -webkit-animation: STAR 2s infinite; /* Safari 4+ */
+    }
+
+
+.btn{
+    padding: 1em 3em;
+    color: rgb(110,237,237);
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0 0 0.5em rgb(110,237,237);
+    background-color: rgb(44,157,157);
+    border: 0.25em solid rgb(110,237,237);
+    border-radius: 1em;
+    box-shadow: 0 0 1em 0.25em rgb(110,237,237),
+        0 0 4em 1em rgba(65, 243, 243, 0.781),
+        inset 0 0 0.75em 0.25em rgb(110,237,237);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn::after{
+    content: "";
+    background-color: rgba(65, 243, 243, 0.781);
+    filter: blur(2em);
+    opacity: 0.7;
+    pointer-events: none;
+    transform: perspective(1.5em)
+    rotateX(35deg)
+    scale(1,0.6);
+}
+
+.btn :hover{
+    color:  rgb(110,237,237);
+    background-color: rgb(110,237,237);
+    box-shadow: 0 0 1em 0.25em
+        rgb(110,237,237),
+        0 0 4em 2em
+        rgba(65, 243, 243, 0.781),
+        inset 0 0 0.75em 0,25em
+        rgb(110,237,237);
+}
+
+.btn:active{
+    box-shadow: 0 0 0.6em 0.25em rgb(110,237,237)
+        0 0 2.5em 2em rgba(65, 243, 243, 0.781)
+        inset 0 0 0.5em 0.25em rgb(110,237,237);
+}
+
+img{
+    transition: .4s;
+}
+
+img:hover{
+    transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(65, 243, 243, 0.781);
+}
