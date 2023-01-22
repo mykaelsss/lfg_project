@@ -5,7 +5,10 @@ from flask_app.models.user import User
 
 @app.route('/')
 def dashboard():
-    return render_template("dashboard.html")
+    data={
+        "id": id
+    }
+    return render_template("dashboard.html", user = User.get_by_id(data))
 
 @app.route('/login')
 def login():
@@ -34,7 +37,7 @@ def user_register():
     if not User.valid_register(request.form):
         return redirect('/register')
     session['user_id'] = User.register_user(request.form)
-    session['username'] = User.register_user(request.form)
+    session['username'] = request.form['username']
     return redirect('/')
 
 @app.route('/friends')

@@ -18,9 +18,9 @@
         </div>
         <nav class="d-flex justify-content-between px-5 py-3 text-white">
             <div class="d-flex gap-2 fs-1">
-                <p>Profile picture</p>
-                {% if session['username'] %}
-                    <p class="fs-1">{{ session['username'] }}</p>
+                <!-- <p>Profile picture</p> -->
+                {% if session['user_id'] %}
+                    <p class="fs-1"> Hey, {{ session['username'] }}</p>
                 {% endif %}
             </div>
             <div class="d-flex gap-4 fs-5">

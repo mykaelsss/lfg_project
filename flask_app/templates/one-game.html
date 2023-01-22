@@ -194,9 +194,10 @@
                 </header>
                 {% for post in posts %}
                 <div  id="posts" class=" px-4 py-2 text-white my-4  " style="height: 230px; width:65%; background-color:#16191C;" >
-                    <p> </p>
+                    <p>Posted by: {{ post.username }}</p>
                     <p> Title: {{ post.title }}</p>
                     <p> Content: {{ post.content }}</p>
+                    <p>Date Posted: {{ post.created_at }}</p>
                 </div>
                 {% endfor %}
             </div>

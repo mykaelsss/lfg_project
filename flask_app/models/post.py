@@ -21,7 +21,7 @@ class Post:
 
     @classmethod
     def all_posts(cls):
-        query = "SELECT * FROM posts"
+        query = "SELECT * FROM posts WHERE game_id = 1"
         results = connectToMySQL(cls.db).query_db(query)
         posts = []
         for post in results:

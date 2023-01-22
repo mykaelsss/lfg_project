@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import post
+from flask_app.models.post import Post
 
 
 
@@ -11,7 +11,7 @@ class Game:
         self.title = data['title']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.game_posts = []
+        self.game_posts = [ ]
 
     @classmethod
     def all_games(cls):
@@ -35,18 +35,20 @@ class Game:
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
-    def game_posts(cls, data):
-        query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id LEFT JOIN games ON games.id = posts.game_id"
+    def all_game_posts(cls, data):
+        query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id LEFT JOIN games ON games.id = posts.game_id WHERE game_id = %(id)s"
         results = connectToMySQL(cls.db).query_db(query, data)
         posts = []
         for row in results:
-            post = cls(row)
             post_data ={
-                "id": row['posts.id'],
+                "id": row['id'],
                 "title": row['title'],
-                "content":row['content'],
-                "created_at":row ['posts.created_at'],
-                "updated_at": row['users.updated_at']
+                "content": row['content'],
+                "game_id": row['game_id'],
+                "user_id": row['user_id'],
+                "username": row['username'],
+                "created_at": row ['created_at'],
+                "updated_at": row['updated_at']
             }
-            posts.game_posts.append( post.Post(post_data))
+            posts.append(row)
         return posts

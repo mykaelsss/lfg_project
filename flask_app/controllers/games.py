@@ -14,6 +14,7 @@ def games():
 def one_game(id):
     data = {
         "id": id,
-        "title": ['title']
+        # "title": ['title'],
+        "content" : ['content'],
     }
-    return render_template("one-game.html", game = Game.get_game_id(data), posts = Post.all_posts())
+    return render_template("one-game.html", game = Game.get_game_id(data), posts = Game.all_game_posts(data))
