@@ -109,6 +109,7 @@ body{
 
 img{
     transition: .4s;
+    height: 100px;
 }
 
 img:hover{
