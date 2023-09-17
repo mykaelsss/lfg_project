@@ -1,15 +1,25 @@
-*{
-    padding: 0px;
-    margin: 0px;
-}
-
-body{
+body {
     min-height: 100vh;
+    max-width: 100vw;
 }
-
-.create_form{
+#d2_apex-body {
+    background-image: linear-gradient(-90deg, #360420 0%, #010822 50%);
+}
+#wz-body {
+    background-image: linear-gradient(315deg, #000000 0%, #470b04 74%);
+}
+#ov-body {
+    background: linear-gradient(135deg, #444444 0%, #0F0F0F 84%);
+}
+#fort-body {
+    background: linear-gradient(135deg, #3F1253 0%, #4D060F 84%);
+}
+#valorant-body {
+    background: linear-gradient(135deg, #599fb3 0%, #0C1621 84%);
+}
+.create_form {
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
@@ -18,12 +28,10 @@ body{
     width: 500px;
     max-width: 80%;
 }
-
-.create_form.active{
+.create_form.active {
     transform: translate(-50%, -50%) scale(1);
 }
-
-.close-button{
+.close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -31,8 +39,19 @@ body{
     font-size: 1.55rem;
     font-weight: bold;
 }
-
-#overlay{
+.create_post_body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+#posts {
+    padding: 20px;
+    color: white ;
+    background-color:#141313 ;
+    width: 55%;
+}
+#overlay {
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -43,79 +62,58 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
 }
-
-#overlay.active{
+#overlay.active {
     pointer-events: all;
     opacity: 1;
 }
-
-main{
-    background-color: #24292E;
-    min-height: 100vh;
+.create_form textarea {
+    max-height: 200px;
+    overflow-y: auto;
 }
-
-nav{
+#apex-nav, #d2-nav, #fort-nav, #ov-nav, #valorant-nav, #wz-nav {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 35vh;
+    max-height: 450px;
+}
+#apex-nav {
     background-image: url("/static/images/apex-neon.webp");
-    height: 35%;
-    background-position: center;
 }
-
-#d2-nav{
+#d2-nav {
     background-image: url("/static/images/destiny-logo.jpeg");
-    height: 35%;
-    background-position: center;
 }
-
-#fort-nav{
-    background-image: url("/static/images/fortnite-season-4-nexus-war-marvel-superheroes-crossover-3840x2160-2642.jpg");
-    height: 35%;
-    background-position: center;
+#fort-nav {
+    background-image: url("/static/images/wp6555252-fortnite-4k-hd-wallpapers.jpg");
 }
-
-#ov-nav{
-    background-image: url("/static/images/1049881.jpg");
-    height: 35%;
-    background-position: center;
+#ov-nav {
+    background-image: url("/static/images/wp3381188-yellowcard-logo-wallpaper.jpg");
 }
-
-#valorant-nav{
-    background-image: url("/static/images/valorant_game.jpg");
-    height: 35%;
-    background-position: center;
+#valorant-nav {
+    background-image: url("/static/images/wp9321661-valorant-1920x1080-wallpapers.jpg");
 }
-
-#wz-nav{
-    background-image: url("/static/images/warzone_game.png");
-    height: 35%;
-    background-position: center;
-    opacity: 80%;
+#wz-nav {
+    background-image: url("/static/images/wp11672165-modern-warfare-2-ghost-desktop-wallpapers.jpg");
 }
-
-#game-title{
-    font-size: 65px;
-}
-
-
-.btn-info{
+.nav-btn{
     padding: 1em 3em;
-    color: rgb(110,237,237);
+    color: #F8F8F8;
     font-size: 15px;
     font-weight: bold;
-    text-shadow: 0 0 0.5em rgb(110,237,237);
-    background-color: rgb(44,157,157);
-    border: 0.25em solid rgb(110,237,237);
+    text-shadow: 0 0 0.5em rgb(237, 237, 232);
+    background-color: rgb(201, 200, 192);
+    border: 0.25em solid rgb(233, 233, 230);
     border-radius: 1em;
-    box-shadow: 0 0 1em 0.25em rgb(110,237,237),
-        0 0 4em 1em rgba(65, 243, 243, 0.781),
-        inset 0 0 0.75em 0.25em rgb(110,237,237);
+    box-shadow: 0 0 1em 0.25em rgb(233, 233, 230),
+        0 0 4em 1em rgba(215, 215, 213, 0.781),
+        inset 0 0 0.75em 0.25em rgb(233, 233, 230);
     outline: none;
     cursor: pointer;
     transition: all 0.3s;
 }
-
-.btn-info::after{
+.nav-btn::after{
     content: "";
-    background-color: rgba(65, 243, 243, 0.781);
+    background-color: rgba(215, 215, 213, 0.781);
     filter: blur(2em);
     opacity: 0.7;
     pointer-events: none;
@@ -123,20 +121,145 @@ nav{
     rotateX(35deg)
     scale(1,0.6);
 }
-
-.btn-info :hover{
-    color:  rgb(110,237,237);
-    background-color: rgb(110,237,237);
+.nav-btn :hover{
+    color:  rgb(233, 233, 230);
+    background-color: rgb(233, 233, 230);
     box-shadow: 0 0 1em 0.25em
-        rgb(110,237,237),
+        rgb(233, 233, 230),
         0 0 4em 2em
-        rgba(65, 243, 243, 0.781),
+        rgba(215, 215, 213, 0.781),
         inset 0 0 0.75em 0,25em
-        rgb(110,237,237);
+        rgb(233, 233, 230);
 }
+.nav-btn:active{
+    box-shadow: 0 0 0.6em 0.25em rgb(233, 233, 230)
+        0 0 2.5em 2em rgba(215, 215, 213, 0.781)
+        inset 0 0 0.5em 0.25em rgb(233, 233, 230);
+}
+.main-header {
+    color: white;
+}
+#content {
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    position: relative;
+  }
+  .svgIcon {
+    width: 12px;
+    transition-duration: .3s;
+  }
+  .svgIcon path {
+    fill: white;
+  }
+  .button:hover {
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    transition-duration: .3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+  }
+  .button:hover .svgIcon {
+    width: 40px;
+    transition-duration: .3s;
+    transform: translateY(60%);
+  }
+  .button::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete";
+    color: white;
+    transition-duration: .3s;
+    font-size: 2px;
+  }
+  .button:hover::before {
+    margin-right: 10px;
+    font-size: .8rem;
+    opacity: 1;
+    transform: translateY(25px);
+    transition-duration: .3s;
+  }
+  .edit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90px;
+    height: 40px;
+    border: none;
+    padding: 0px 20px;
+    background-color: rgb(168, 38, 255);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px rgb(140, 32, 212);
+    transition-duration: .3s;
+  }
 
-.btn-info:active{
-    box-shadow: 0 0 0.6em 0.25em rgb(110,237,237)
-        0 0 2.5em 2em rgba(65, 243, 243, 0.781)
-        inset 0 0 0.5em 0.25em rgb(110,237,237);
+  .svg {
+    width: 13px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    fill: white;
+    transition-duration: .3s;
+  }
+
+  .edit:hover {
+    color: transparent;
+  }
+
+  .edit:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: .3s;
+  }
+
+  .edit:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0px rgb(140, 32, 212);
+  }
+@media screen and (max-width: 768px) {
+    .main-header {
+        font-size: 15px;
+        color: white;
+        text-align: center;
+    }
+    .create_form {
+        top: 50%;
+        width: 300px;
+    }
+    .create_form textarea {
+        max-height: 150px;
+        overflow-y: auto;
+    }
+    #d2-nav, #apex-nav, #ov-nav, #fort-nav, #wz-nav, #valorant-nav {
+        height: 35vh;
+    }
+    #posts {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    #posts {
+        width: 85%;
+    }
 }

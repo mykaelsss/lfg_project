@@ -1,7 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from itsdangerous import TimedSerializer
 import re
 from flask import flash
-from flask_app import bcrypt
+from flask_app import bcrypt, app
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
 
@@ -26,6 +27,14 @@ class User:
         }
         return connectToMySQL(cls.db).query_db(query,data)
 
+    @classmethod
+    def updatePassword(cls, data):
+        query = "UPDATE users SET password = %(password)s WHERE email = %(email)s;"
+        data = {
+            **data,
+            "password":bcrypt.generate_password_hash(data['password']).decode('utf-8')
+        }
+        return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
     def get_by_id(cls, data):
@@ -69,6 +78,41 @@ class User:
         if user['password'] != user['confirm_password']:
             flash("Password and confirm password must match.", 'register')
             is_valid = False
+        return is_valid
+
+    def get_token(user):
+        serial = TimedSerializer(app.config['SECRET_KEY'])
+        return serial.dumps({'user_id': user.id, 'email': user.email})
+
+    @staticmethod
+    def confirm_token(token):
+        serializer = TimedSerializer(app.config['SECRET_KEY'])
+        try:
+            user_info = serializer.loads(token, max_age=600)
+        except:
+            return None
+        return user_info
+
+    @staticmethod
+    def valid_user(user):
+        is_valid = True
+        if User.get_by_email(user):
+            flash("Reset request sent, please check your email.", 'resetRequest')
+        if not User.get_by_email(user):
+            flash("This email is not registered.", 'resetRequest')
+        return is_valid
+
+    @staticmethod
+    def validPasswordReset(user):
+        is_valid = True
+        if not PASSWORD_REGEX.match(user['password']):
+            flash("Password must be at least 8 characters long, contain one capital letter, one number and a special character.", 'pwReset')
+            is_valid = False
+        if user['password'] != user['confirm_password']:
+            flash("Password and confirm password must match.", 'pwReset')
+            is_valid = False
+        if PASSWORD_REGEX.match(user['password']) and user['password'] == user['confirm_password']:
+            flash('Password successfully updated.', 'pwReset')
         return is_valid
 
 

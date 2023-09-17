@@ -1,5 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from datetime import datetime, timedelta
+
 
 
 class Post:
@@ -28,13 +30,34 @@ class Post:
             posts.append(cls(post))
         return posts
 
+    @classmethod
+    def deletePost(cls,data):
+        query = "DELETE FROM posts WHERE id = %(id)s"
+        return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def editPost(cls,data):
+        query = "UPDATE posts SET title = %(title)s, content = %(content)s WHERE id = %(id)s"
+        return connectToMySQL(cls.db).query_db(query,data)
+
     @staticmethod
     def validate_post(post):
         is_valid = True
-        if len(post['title']) < 10:
-            flash("The title must be at least 10 characters.", 'post_form')
+        if len(post['title']) < 5:
+            flash("The title must be at least 5 characters.", 'post_form')
             is_valid = False
-        if len(post['content']) < 15:
-            flash("Content must be at least 15 characters.", 'post_form')
+        if len(post['content']) < 10:
+            flash("Content must be at least 10 characters.", 'post_form')
+            is_valid = False
+        return is_valid
+
+    @staticmethod
+    def validateEdit(post):
+        is_valid = True
+        if (len(post['title'])) < 5:
+            flash("The title must be at least 5 characters.", 'post_form')
+            is_valid = False
+        if (len(post['content'])) < 10:
+            flash("Content must be at least 10 characters.", 'post_form')
             is_valid = False
         return is_valid

@@ -1,30 +1,123 @@
-var NUMBER_OF_STARS = 50;
+let NUMBER_OF_STARS;
 
-var addPulse = function( element ){
-  var pulseTime = Math.random() * 4000;
-  setTimeout( function(  ){
-    element.className += ' pulse';
-  }, pulseTime );
-
+const addPulse = function( element ){
+	const pulseTime = Math.random() * 4000;
+	setTimeout( function(){
+		element.className += ' pulse';
+	}, pulseTime);
 }
+const stars = []; // An array to store star elements
 
-
-
-
-
-for( var jess = 0; jess < NUMBER_OF_STARS; jess++ ) {
-    var aStar = document.createElement('div');
-		aStar.className='star';
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-  	var x = Math.random( ) * windowWidth;
+function addStar(x, y) {
+    const aStar = document.createElement('div');
+    aStar.className = 'star';
     aStar.style.left = x + 'px';
-    document.body.appendChild( aStar );
-
-  	var y = Math.random( ) * windowHeight;
     aStar.style.top = y + 'px';
-    addPulse( aStar );
+    document.body.appendChild(aStar);
+    addPulse(aStar);
+    stars.push(aStar);
 }
+let vpWidth = window.innerWidth;
+function correctStars(width) {
+	if (width >= 1000) {
+		NUMBER_OF_STARS = 400;
+		console.log("stars", NUMBER_OF_STARS)
+		return;
+	}
+	else if (width >= 768) {
+		NUMBER_OF_STARS = 300;
+		console.log("stars", NUMBER_OF_STARS)
+		return;
+	}
+	else if (width >= 600) {
+		NUMBER_OF_STARS = 250;
+		console.log("stars", NUMBER_OF_STARS)
+		return;
+	}
+	else NUMBER_OF_STARS = 150;
+	console.log("stars", NUMBER_OF_STARS)
+	return
+}
+correctStars(vpWidth);
+function updateStarPositions() {
+    const windowWidth = document.body.offsetWidth;
+    const windowHeight = document.body.offsetHeight;
+
+    // Update the positions of existing stars
+    stars.forEach((star) => {
+        const x = Math.floor(Math.random() * windowWidth);
+        const minY = 10; // Minimum Y position (10 pixels from the top)
+    	const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
+    	const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+        star.style.left = x + 'px';
+        star.style.top = y + 'px';
+    });
+}
+
+// Initial call to add stars when the page loads
+for (let jess = 0; jess < NUMBER_OF_STARS; jess++) {
+    const windowWidth = document.body.offsetWidth;
+    const windowHeight = document.body.offsetHeight;
+	// console.log(windowWidth)
+	// console.log(windowHeight)
+    const x = Math.floor(Math.random() * windowWidth);
+    const minY = 10; // Minimum Y position (10 pixels from the top)
+    const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
+    const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY; // Calculate random Y within range
+    addStar(x, y);
+}
+function handleResize() {
+    const newVpWidth = window.innerWidth;
+    if (newVpWidth !== vpWidth) {
+        correctStars(newVpWidth);
+    }
+    updateStarPositions();
+}
+window.addEventListener('resize', handleResize);
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navBar = document.querySelector(".nav-bar");
+const navLinks = document.querySelectorAll(".btn");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu () {
+	hamburger.classList.toggle("active");
+	navBar.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+function updateNavLinksClasses() {
+    navLinks.forEach(function(navLink) {
+        navLink.classList.remove("btn", "btn-info");
+        navLink.classList.add("nav-link");
+    });
+}
+
+function revertChanges() {
+	navLinks.forEach(function(navLink) {
+		navLink.classList.remove("nav-link");
+		navLink.classList.add("btn", "btn-info")
+	})
+}
+
+(mediaQuery.matches) ? updateNavLinksClasses() : revertChanges();
+
+mediaQuery.addEventListener("change", (event) => {
+    if (event.matches) {
+        updateNavLinksClasses();
+    } else {
+		revertChanges();
+    }
+});
+const floatingImages = document.querySelectorAll('.floating');
+floatingImages.forEach((image, index) => {
+    const animationDelay = index - 0.5;
+    image.style.animationDelay = `${animationDelay}s`;
+});
+
 
 
 
@@ -94,15 +187,3 @@ function fly3(target,lef2,num2,top2,num3) {
         }
     }
     stfly()
-
-    var cursor = true;
-    var speedCursor = 500;
-    setInterval(() => {
-        if(cursor) {
-        document.getElementById('cursor').style.opacity = 0;
-        cursor = false;
-        }else {
-        document.getElementById('cursor').style.opacity = 1;
-        cursor = true;
-        }
-    }, speedCursor);

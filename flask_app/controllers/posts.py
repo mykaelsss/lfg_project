@@ -16,3 +16,23 @@ def create_post():
         return redirect(request.referrer)
     Post.create_post(data)
     return redirect(request.referrer)
+
+@app.route('/delete/post/<int:id>')
+def deletePost(id):
+    data = { "id" : id }
+    Post.deletePost(data)
+    return redirect(request.referrer)
+
+@app.route('/edit/post/<int:id>', methods=['POST'])
+def editPost(id):
+    data = {
+        "title" : request.form['title'],
+        "content" : request.form['content'],
+        "user_id" : session['user_id'],
+        "game_id" : request.form['game_id'],
+        "id" : id
+    }
+    if not Post.validateEdit(data):
+        return redirect(request.referrer)
+    Post.editPost(data)
+    return redirect(request.referrer)
