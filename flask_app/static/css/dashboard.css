@@ -229,7 +229,7 @@ img:hover{
         transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
     .nav-menu {
-        position: fixed;
+        position: absolute;
         top: 4rem;
         flex-direction: column;
         color: white;
@@ -248,7 +248,7 @@ img:hover{
     }
     .nav-menu.active {
         left: 0;
-        /* z-index: 1000; */
+        z-index: 1000;
     }
     .nav-menu.active .nav-item:nth-child(1) {
         transition-delay: 0.1s;
