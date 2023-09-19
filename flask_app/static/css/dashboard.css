@@ -1,12 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     line-height: 1.6;
-}
-html {
-    background-color: #24292e;
-    max-width: min-content;
 }
 body {
     min-height: 100vh;
@@ -222,7 +218,7 @@ img:hover{
         padding-right: 50px;
     }
     img {
-        height: 30px;
+        height: 90px;
     }
     main {
         flex-direction: column;
