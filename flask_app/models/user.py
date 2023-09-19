@@ -98,8 +98,10 @@ class User:
         is_valid = True
         if User.get_by_email(user):
             flash("Reset request sent, please check your email.", 'resetRequest')
+            is_valid = False
         if not User.get_by_email(user):
             flash("This email is not registered.", 'resetRequest')
+            is_valid = False
         return is_valid
 
     @staticmethod

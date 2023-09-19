@@ -112,14 +112,6 @@ mediaQuery.addEventListener("change", (event) => {
 		revertChanges();
     }
 });
-const floatingImages = document.querySelectorAll('.floating');
-floatingImages.forEach((image, index) => {
-    const animationDelay = index - 0.5;
-    image.style.animationDelay = `${animationDelay}s`;
-});
-
-
-
 
 message = document.getElementById("connect").innerHTML; // $ = taking a new line
 distance = 150; // pixel(s)

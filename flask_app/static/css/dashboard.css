@@ -138,17 +138,20 @@ a {
 }
 img{
     transition: .4s;
-    height: 90px;
+    height: 110px;
 }
 img:hover{
     box-shadow: 0 0 20px rgba(65, 243, 243, 0.781);
 }
 @keyframes floatAnimation {
-    from {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    50% {
         transform: translateX(-10px) translateY(-10px) rotate(-3deg);
     }
-    to {
-        transform: translateX(10px) translateY(10px) rotate(0deg);
+    100% {
+        transform: translateX(0) translateY(0) rotate(0deg);
     }
 }
 @keyframes fadeIn {
@@ -164,21 +167,57 @@ img:hover{
 .floating {
     opacity: 0;
     transform: translateY(100%);
-    animation: fadeIn 1s ease-out forwards, floatAnimation 2.5s infinite alternate;
+    /* animation: fadeIn 1s ease-out forwards, floatAnimation 2.5s 2s infinite alternate; */
+}
+.img1 {
+    animation: fadeIn 1s ease-out forwards, floatAnimation 3.5s 1s infinite alternate;
+}
+
+.img2 {
+    animation: fadeIn 1s .5s ease-out forwards, floatAnimation 3.5s 1.5s infinite alternate;;
+}
+
+.img3 {
+    animation: fadeIn 1s 1s ease-out forwards, floatAnimation 3.5s 2s infinite alternate;;
+}
+.img4 {
+    animation: fadeIn 1s 1.5s ease-out forwards, floatAnimation 3.5s 2.5s infinite alternate;;
+}
+.img5 {
+    animation: fadeIn 1s 2s ease-out forwards, floatAnimation 3.5s 3s infinite alternate;;
+}
+.img6 {
+    animation: fadeIn 1s 2.5s ease-out forwards, floatAnimation 3.5s 3.5s infinite alternate;;
+}
+#imgContainer {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 #game1, #game3, #game5 {
     width: 350px;
     display: flex;
     justify-content: start;
-    padding-left: 40px;
+    /* padding-left: 30px; */
 }
 #game2, #game4, #game6 {
     width: 350px;
     display: flex;
     justify-content: end;
-    padding-right: 40px;
+    /* padding-right: 30px; */
 }
 @media screen and (max-width: 768px) {
+    #game1, #game3, #game5 {
+        padding-left: 50px;
+    }
+    #game2, #game4, #game6 {
+        padding-right: 50px;
+    }
+    img {
+        height: 90px;
+    }
     main {
         flex-direction: column;
         align-items: center;
@@ -242,11 +281,4 @@ img:hover{
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-}
-@media screen and (max-width: 992px) {
-
-
-}
-@media screen and (min-width: 993px) {
-
 }
