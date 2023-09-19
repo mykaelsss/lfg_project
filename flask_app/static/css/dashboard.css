@@ -186,7 +186,7 @@ img:hover{
     animation: fadeIn 1s 2s ease-out forwards, floatAnimation 3.5s 3s infinite alternate;;
 }
 .img6 {
-    animation: fadeIn 1s 2.5s ease-out forwards, floatAnimation 3.5s 3.5s infinite alternate;;
+    animation: fadeIn 1s 5s ease-out forwards, floatAnimation 3.5s 3.5s infinite alternate;;
 }
 #imgContainer {
     width: 800px;
