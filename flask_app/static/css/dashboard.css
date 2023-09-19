@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
     line-height: 1.6;
 }
 body {
@@ -24,6 +24,7 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.5rem;
+    background-color: transparent;
 }
 
 .hamburger {
@@ -166,7 +167,6 @@ img:hover{
 }
 .floating {
     opacity: 0;
-    /* transform: translateY(100%); */
 }
 .img1 {
     animation: fadeIn 1s ease-out forwards, floatAnimation 3.5s 1s infinite alternate;
@@ -235,12 +235,10 @@ img:hover{
         color: white;
         width: 100%;
         font-weight: bold;
-        border-radius: 10px;
         padding: 10px 25px;
         gap: 1.8rem;
         text-align: right;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     }
     .nav-bar {
         transition: margin-bottom .3s ease;
