@@ -248,7 +248,7 @@ img:hover{
     }
     .nav-menu.active {
         left: 0;
-        z-index: 1000;
+        /* z-index: 1000; */
     }
     .nav-menu.active .nav-item:nth-child(1) {
         transition-delay: 0.1s;
