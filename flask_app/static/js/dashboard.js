@@ -17,7 +17,9 @@ function addStar(x, y) {
     addPulse(aStar);
     stars.push(aStar);
 }
+
 let vpWidth = window.innerWidth;
+
 function correctStars(width) {
 	if (width >= 1000) {
 		NUMBER_OF_STARS = 400;
@@ -38,7 +40,9 @@ function correctStars(width) {
 	console.log("stars", NUMBER_OF_STARS)
 	return
 }
+
 correctStars(vpWidth);
+
 function updateStarPositions() {
     const windowWidth = document.body.offsetWidth;
     const windowHeight = document.body.offsetHeight;
@@ -70,14 +74,20 @@ for (let jess = 0; jess < NUMBER_OF_STARS; jess++) {
     const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY; // Calculate random Y within range
     addStar(x, y);
 }
+
+let resizeTimer;
+
 function handleResize() {
     const newVpWidth = window.innerWidth;
     if (newVpWidth !== vpWidth) {
-        correctStars(newVpWidth);
+        vpWidth = newVpWidth;
+        correctStars(vpWidth);
     }
     updateStarPositions();
 }
+
 window.addEventListener('resize', handleResize);
+
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navBar = document.querySelector(".nav-bar");
