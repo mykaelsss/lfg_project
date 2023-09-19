@@ -1,4 +1,4 @@
-let NUMBER_OF_STARS;
+// let NUMBER_OF_STARS;
 
 const addPulse = function( element ){
 	const pulseTime = Math.random() * 4000;
