@@ -1,75 +1,75 @@
-// let NUMBER_OF_STARS;
+let NUMBER_OF_STARS;
 
-// const addPulse = function( element ){
-// 	const pulseTime = Math.random() * 4000;
-// 	setTimeout( function(){
-// 		element.className += ' pulse';
-// 	}, pulseTime);
-// }
-// const stars = []; // An array to store star elements
+const addPulse = function( element ){
+	const pulseTime = Math.random() * 4000;
+	setTimeout( function(){
+		element.className += ' pulse';
+	}, pulseTime);
+}
+const stars = []; // An array to store star elements
 
-// function addStar(x, y) {
-//     const aStar = document.createElement('div');
-//     aStar.className = 'star';
-//     aStar.style.left = x + 'px';
-//     aStar.style.top = y + 'px';
-//     document.body.appendChild(aStar);
-//     addPulse(aStar);
-//     stars.push(aStar);
-// }
-// let vpWidth = window.innerWidth;
-// function correctStars(width) {
-// 	if (width >= 1000) {
-// 		NUMBER_OF_STARS = 400;
-// 		console.log("stars", NUMBER_OF_STARS)
-// 		return;
-// 	}
-// 	else if (width >= 768) {
-// 		NUMBER_OF_STARS = 300;
-// 		console.log("stars", NUMBER_OF_STARS)
-// 		return;
-// 	}
-// 	else if (width >= 600) {
-// 		NUMBER_OF_STARS = 250;
-// 		console.log("stars", NUMBER_OF_STARS)
-// 		return;
-// 	}
-// 	else NUMBER_OF_STARS = 150;
-// 	console.log("stars", NUMBER_OF_STARS)
-// 	return
-// }
-// correctStars(vpWidth);
-// function updateStarPositions() {
-//     const windowWidth = document.body.offsetWidth;
-//     const windowHeight = document.body.offsetHeight;
+function addStar(x, y) {
+    const aStar = document.createElement('div');
+    aStar.className = 'star';
+    aStar.style.left = x + 'px';
+    aStar.style.top = y + 'px';
+    document.body.appendChild(aStar);
+    addPulse(aStar);
+    stars.push(aStar);
+}
+let vpWidth = window.innerWidth;
+function correctStars(width) {
+	if (width >= 1000) {
+		NUMBER_OF_STARS = 400;
+		console.log("stars", NUMBER_OF_STARS)
+		return;
+	}
+	else if (width >= 768) {
+		NUMBER_OF_STARS = 300;
+		console.log("stars", NUMBER_OF_STARS)
+		return;
+	}
+	else if (width >= 600) {
+		NUMBER_OF_STARS = 250;
+		console.log("stars", NUMBER_OF_STARS)
+		return;
+	}
+	else NUMBER_OF_STARS = 150;
+	console.log("stars", NUMBER_OF_STARS)
+	return
+}
+correctStars(vpWidth);
+function updateStarPositions() {
+    const windowWidth = document.body.offsetWidth;
+    const windowHeight = document.body.offsetHeight;
 
-//     // Update the positions of existing stars
-//     stars.forEach((star) => {
-// 		const minX = 10;
-// 		const maxX = windowWidth - 10;
-// 		const x = Math.floor(Math.random() * (maxX - minX)) + minX;
-//         const minY = 10; // Minimum Y position (10 pixels from the top)
-//     	const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
-//     	const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
-//         star.style.left = x + 'px';
-//         star.style.top = y + 'px';
-//     });
-// }
+    // Update the positions of existing stars
+    stars.forEach((star) => {
+		const minX = 10;
+		const maxX = windowWidth - 10;
+		const x = Math.floor(Math.random() * (maxX - minX)) + minX;
+        const minY = 10; // Minimum Y position (10 pixels from the top)
+    	const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
+    	const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+        star.style.left = x + 'px';
+        star.style.top = y + 'px';
+    });
+}
 
-// // Initial call to add stars when the page loads
-// for (let jess = 0; jess < NUMBER_OF_STARS; jess++) {
-//     const windowWidth = document.body.offsetWidth;
-//     const windowHeight = document.body.offsetHeight;
-// 	// console.log(windowWidth)
-// 	// console.log(windowHeight)
-// 	const minX = 10;
-// 	const maxX = windowWidth - 10;
-//     const x = Math.floor(Math.random() * (maxX - minX)) + minX;
-//     const minY = 10; // Minimum Y position (10 pixels from the top)
-//     const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
-//     const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY; // Calculate random Y within range
-//     addStar(x, y);
-// }
+// Initial call to add stars when the page loads
+for (let jess = 0; jess < NUMBER_OF_STARS; jess++) {
+    const windowWidth = document.body.offsetWidth;
+    const windowHeight = document.body.offsetHeight;
+	// console.log(windowWidth)
+	// console.log(windowHeight)
+	const minX = 10;
+	const maxX = windowWidth - 10;
+    const x = Math.floor(Math.random() * (maxX - minX)) + minX;
+    const minY = 10; // Minimum Y position (10 pixels from the top)
+    const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
+    const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY; // Calculate random Y within range
+    addStar(x, y);
+}
 function handleResize() {
     const newVpWidth = window.innerWidth;
     if (newVpWidth !== vpWidth) {

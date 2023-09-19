@@ -189,33 +189,31 @@ img:hover{
     animation: fadeIn 1s 2.5s ease-out forwards, floatAnimation 3.5s 3.5s infinite alternate;;
 }
 #imgContainer {
-    width: 800px;
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 #game1, #game3, #game5 {
-    width: 350px;
     display: flex;
     justify-content: start;
-    /* padding-left: 30px; */
+    margin-right: 200px;
 }
 #game2, #game4, #game6 {
-    width: 350px;
     display: flex;
     justify-content: end;
-    /* padding-right: 30px; */
+    margin-left: 200px;
 }
 @media screen and (max-width: 768px) {
     body {
         max-width: 100vw;
     }
     #game1, #game3, #game5 {
-        padding-left: 50px;
+        margin-right: 120px;
     }
     #game2, #game4, #game6 {
-        padding-right: 50px;
+        margin-left: 120px;
     }
     img {
         height: 90px;
