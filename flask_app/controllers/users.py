@@ -2,7 +2,7 @@ from flask_app import app, mail
 from flask import render_template, redirect, request,session, url_for, request,flash
 from flask_app.models.user import User
 from flask_mail import Message
-
+import time
 @app.route('/')
 def dashboard():
     data={
@@ -53,9 +53,7 @@ def reset_token(token):
 @app.route('/reset/password', methods = ['POST'])
 def reset_password():
     if not User.validPasswordReset(request.form):
-        print("invalid")
         return redirect('/update/password/<token>')
-    print("success")
     User.updatePassword(request.form)
     return redirect('/login')
 
@@ -65,9 +63,9 @@ def forgotPassword():
 
 @app.route('/forgot/user', methods=['POST'])
 def validUser():
+    user = User.get_by_email(request.form)
     if not User.valid_user(request.form):
         return redirect('/forgot')
-    user = User.get_by_email(request.form)
     sendMail(user)
     return redirect('/forgot')
 
