@@ -137,7 +137,6 @@ a {
         inset 0 0 0.5em 0.25em rgb(110,237,237);
 }
 img{
-    transition: .4s;
     height: 110px;
 }
 img:hover{
@@ -166,8 +165,7 @@ img:hover{
 }
 .floating {
     opacity: 0;
-    transform: translateY(100%);
-    /* animation: fadeIn 1s ease-out forwards, floatAnimation 2.5s 2s infinite alternate; */
+    /* transform: translateY(100%); */
 }
 .img1 {
     animation: fadeIn 1s ease-out forwards, floatAnimation 3.5s 1s infinite alternate;
