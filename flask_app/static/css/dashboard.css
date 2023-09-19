@@ -208,11 +208,6 @@ img:hover{
     /* padding-right: 30px; */
 }
 @media screen and (max-width: 768px) {
-    body {
-        min-height: auto;
-        background-attachment: scroll;
-        background-size: auto;
-    }
     #game1, #game3, #game5 {
         padding-left: 50px;
     }
