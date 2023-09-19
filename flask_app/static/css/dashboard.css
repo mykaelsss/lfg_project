@@ -208,6 +208,9 @@ img:hover{
     /* padding-right: 30px; */
 }
 @media screen and (max-width: 768px) {
+    body {
+        max-width: 100%;
+    }
     #game1, #game3, #game5 {
         padding-left: 50px;
     }
