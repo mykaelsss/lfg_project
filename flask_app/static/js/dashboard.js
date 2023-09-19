@@ -60,7 +60,9 @@ for (let jess = 0; jess < NUMBER_OF_STARS; jess++) {
     const windowHeight = document.body.offsetHeight;
 	// console.log(windowWidth)
 	// console.log(windowHeight)
-    const x = Math.floor(Math.random() * windowWidth);
+	const minX = 10;
+	const maxX = windowWidth - 10;
+    const x = Math.floor(Math.random() * (maxX - minX)) + minX;
     const minY = 10; // Minimum Y position (10 pixels from the top)
     const maxY = windowHeight - 10; // Maximum Y position (10 pixels from the bottom)
     const y = Math.floor(Math.random() * (maxY - minY + 1)) + minY; // Calculate random Y within range
