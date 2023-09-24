@@ -75,9 +75,73 @@ function game(gameNav, gameBody, gameID) {
 game(gameIdNav, gameIdBody, gameIDValue);
 
 function adjustRows() {
-    const textArea = document.getElementById("des");
+    const textArea = document.getElementById("content");
     if (window.innerWidth <=767) textArea.rows = 5;
     else textArea.rows = 10;
 }
 window.addEventListener("resize", adjustRows);
 adjustRows();
+
+const posts = document.querySelectorAll("#posts");
+const postsArr = Array.from(posts);
+const postsPerPage = 10;
+let currentPage = 1;
+
+const nextButton = document.getElementById("nextButton");
+const prevButton = document.getElementById("prevButton");
+
+function updateNextButton() {
+    nextButton.disabled = currentPage === Math.ceil(postsArr.length / postsPerPage);
+}
+
+function updatePrevButton() {
+    prevButton.disabled = currentPage === 1;
+}
+
+updateNextButton();
+updatePrevButton();
+
+function showPosts(pageNumber) {
+    const indexOfLastPost = pageNumber * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+
+    postsArr.forEach((post, index) => {
+        if (index >= indexOfFirstPost && index < indexOfLastPost) {
+            post.style.display = "block";
+        } else {
+            post.style.display = "none";
+        }
+    });
+}
+
+showPosts(currentPage);
+
+let totalPages = Math.ceil(postsArr.length / postsPerPage);
+
+const select = document.getElementById("pages");
+
+for (let i = 0; i < totalPages; i++) {
+    const option = document.createElement("option");
+    option.value = i + 1;
+    option.text = i + 1;
+    select.appendChild(option);
+}
+
+
+function paginate(pageNumber) {
+    currentPage = pageNumber;
+    showPosts(currentPage);
+    updateNextButton();
+    updatePrevButton();
+
+    const options = document.querySelectorAll('#pages option');
+    options.forEach(option => {
+        if (option.value == currentPage) {
+            option.selected = true;
+        } else {
+            option.selected = false;
+        }
+    });
+}
+
+paginate(1);

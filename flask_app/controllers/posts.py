@@ -32,6 +32,7 @@ def editPost(id):
         "game_id" : request.form['game_id'],
         "id" : id
     }
+    print(data['id'], data['user_id'])
     if not Post.validateEdit(data):
         return redirect(request.referrer)
     Post.editPost(data)

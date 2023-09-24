@@ -5,10 +5,47 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Game</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/one-game.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- <style>
+            select::before {
+                content: "\f0dc";
+                color: white;
+                font-family: "Font Awesome 6 Free";
+                z-index: 1;
+            }
+
+            select {
+                color: white;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                background-image: none;
+                background-color: transparent;
+                padding-right: 20px;
+            }
+
+            select::after {
+                color: white;
+                position: absolute;
+                top: 50%;
+                right: 5px;
+                transform: translateY(-50%);
+                content: "\f0dc";
+                font-family: "Font Awesome 6 Free";
+                font-style: normal;
+                font-weight: 900;
+                text-decoration: inherit;
+                background: 0 0;
+                width: 17px;
+                font-size: 12px;
+                background: #333;
+                text-align: center;
+                color: white;
+            }
+        </style> -->
     </head>
     <body game-body-id="{{ game.id }}">
         {% for game in game %}
@@ -43,9 +80,9 @@
         </header>
         <main class="p-3">
             <div class="d-flex flex-column align-items-center h-100 w-100">
-                {% for message in get_flashed_messages() %}
+                {% for message in get_flashed_messages(category_filter='post_form') %}
                 <div class="" id="error">
-                    <p>{{message}}</p>
+                    <p>{{ message }}</p>
                 </div>
                 {% endfor %}
                 <div class="main-header">
@@ -65,11 +102,11 @@
                                 <div class="create_post_body">
                                     <div class="d-flex flex-column align-items-start">
                                         <label for="title">Title:</label>
-                                        <textarea name="title" id="" cols="40" rows="5" class="form-control"></textarea>
+                                        <textarea name="title" id="title" cols="40" rows="5" class="form-control"></textarea>
                                     </div>
                                     <div class="d-flex flex-column align-items-start">
                                         <label for="content">Description:</label>
-                                        <textarea name="content" id="des" cols="40" rows="10" class="form-control"></textarea>
+                                        <textarea name="content" id="content" cols="40" rows="10" class="form-control"></textarea>
                                     </div>
                                     <input type="submit"  id="sendForm" value="submit" class="btn btn-primary form-control">
                                     <input type="hidden" value="{{ game.id }}" name="game_id">
@@ -89,14 +126,13 @@
                         <a href="/delete/post/{{post.id}}" class="button">
                             <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
                         </a>
-                        <button data-form-target="#create_form2" class="edit">Edit
+                        <button data-form-target="#_{{post.id}}" class="edit">Edit
                             <svg class="svg" viewBox="0 0 512 512">
                             <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
                         </button>
                     </div>
-                    {% endif %}
                 </div>
-                <div class="create_form bg-light text-dark rounded-1" id="create_form2">
+                <div class="create_form bg-light text-dark rounded-1" id="_{{post.id}}">
                     <div class="create_post_header d-flex py-3 px-4 justify-content-between">
                         <h3>Edit post</h3>
                         <button data-close-button class="close-button">&times;</button>
@@ -105,18 +141,40 @@
                         <div class="create_post_body">
                             <div class="d-flex flex-column align-items-start">
                                 <label for="title">Title:</label>
-                                <textarea name="title" id="" cols="40" rows="5" class="form-control">{{post.title}}</textarea>
+                                <textarea name="title" id="title" cols="40" rows="5" class="form-control">{{ post.title }}</textarea>
                             </div>
                             <div class="d-flex flex-column align-items-start">
                                 <label for="content">Description:</label>
-                                <textarea name="content" id="des" cols="40" rows="10" class="form-control">{{post.content}}</textarea>
+                                <textarea name="content" id="content" cols="40" rows="10" class="form-control">{{ post.content }}</textarea>
                             </div>
                             <input type="submit"  id="sendForm" value="submit" class="btn btn-primary form-control">
                             <input type="hidden" value="{{ game.id }}" name="game_id">
                         </div>
                     </form>
+                    {% endif %}
                 </div>
                 {% endfor %}
+            </div>
+            <div class="d-flex justify-content-center gap-2 my-4" id="paginationDiv">
+                <button
+                class="btn btn-outline-primary"
+                onclick="paginate(currentPage - 1)"
+                id="prevButton"
+                >
+                &lt;
+                </button>
+                <div class="custom-select d-flex">
+                    <select name="pages" id="pages" onchange="paginate(parseInt(this.value))" class="rounded-2 px-4 border border-primary">
+
+                    </select>
+                    <span class="select-arrow">&#xf0dc;</span>
+                </div>
+                <button
+                class="btn btn-outline-primary"
+                onclick="paginate(currentPage + 1)"
+                id="nextButton">
+                &gt;
+                </button>
             </div>
         </main>
         {% endfor %}

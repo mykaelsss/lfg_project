@@ -1,7 +1,31 @@
+:root {
+    --gray: #141313;
+}
 body {
     min-height: 100vh;
     max-width: 100vw;
 }
+.custom-select {
+    position: relative;
+}
+    .custom-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: white;
+    background-color: var(--gray);
+}
+
+    .custom-select .select-arrow {
+    position: absolute;
+    top: 35%;
+    right: 10px;
+    font-size: .75em !important;
+    font: var(--fa-font-solid);
+    content: "\f0dc";
+    color: white;
+}
+
 #d2_apex-body {
     background-image: linear-gradient(-90deg, #360420 0%, #010822 50%);
 }
