@@ -36,7 +36,7 @@ class Game:
 
     @classmethod
     def all_game_posts(cls, data):
-        query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id LEFT JOIN games ON games.id = posts.game_id WHERE game_id = %(id)s"
+        query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id LEFT JOIN games ON games.id = posts.game_id WHERE game_id = %(id)s ORDER BY posts.id DESC"
         results = connectToMySQL(cls.db).query_db(query, data)
         posts = []
         for row in results:
