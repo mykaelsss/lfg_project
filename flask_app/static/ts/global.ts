@@ -1,15 +1,15 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-const navLinks = document.querySelectorAll(".nav-btn");
-const navBar = document.querySelector(".nav-bar");
-const link = document.querySelector(".nav-btn");
+const hamburger: HTMLElement | null = document.querySelector(".hamburger");
+const navMenu: HTMLElement | null = document.querySelector(".nav-menu");
+const navBar: HTMLElement | null = document.querySelector(".nav-bar");
+const navLinks: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".nav-btn");
+const link: HTMLElement | null = document.querySelector(".nav-btn")!;
 
-hamburger.addEventListener("click", mobileMenu);
+if (hamburger) hamburger.addEventListener("click", mobileMenu);
 
 function mobileMenu () {
-    navBar.classList.toggle("active");
-	hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+    navBar?.classList.toggle("active");
+	hamburger?.classList.toggle("active");
+    navMenu?.classList.toggle("active");
 }
 
 const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -45,7 +45,7 @@ mediaQuery.addEventListener("change", (event) => {
 const showPassword = document.querySelector("#show-password");
 const passwordFields = document.querySelectorAll(".password-toggle");
 
-showPassword.addEventListener("click", function () {
+showPassword?.addEventListener("click", function (this: any) {
     this.style.cursor = "pointer";
     this.classList.toggle("fa-eye");
     this.classList.toggle("fa-eye-slash", !this.classList.contains("fa-eye"));
